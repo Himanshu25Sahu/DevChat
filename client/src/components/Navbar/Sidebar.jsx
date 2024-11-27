@@ -77,7 +77,7 @@ const Sidebar = () => {
           <div className="menu">
             <Link to="/compile" className="menu_item">
               <div className="icon">
-                <BiCodeAlt /> {/* Updated icon */}
+                <BiCodeAlt />
               </div>
               {isOpen && <div className="link_text">Compile</div>}
             </Link>

@@ -33,7 +33,6 @@ const EditProfile = () => {
       setIsLoading(true);
       const response = await axios.post("http://localhost:3000/user/updateAccount", formData);
       const { data } = response;
-      console.log(response.data.data.user.verificationCode);
       if (email) {
         setIsVerificationRequired(true);
       }

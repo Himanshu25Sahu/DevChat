@@ -7,7 +7,6 @@ import Loader from "../../components/Loader/Loader";
 
 const Profile = () => {
   const userId = useSelector((state) => state.post.userId); // Replace `state.post.userId` if userId is stored elsewhere
-  console.log("User ID:", userId);
 
   const [avatar, setAvatar] = useState("");
   const [userName, setUserName] = useState("");

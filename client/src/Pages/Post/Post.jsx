@@ -22,7 +22,6 @@ function Post({ postData, onLike }) {
   useEffect(() => {
     if (showComments) {
       fetchComments();
-      console.log(postData.user.avatar);
       
     }
   }, [showComments]);

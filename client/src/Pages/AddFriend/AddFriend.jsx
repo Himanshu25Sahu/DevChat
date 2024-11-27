@@ -125,9 +125,7 @@ const AddFriend = () => {
 
   return (
     <div className="Search-container">
-      {/* Left Column */}
       <div className="Left-column">
-        {/* User Search */}
         <div className="User-search">
           <h3>Search Users</h3>
           <input

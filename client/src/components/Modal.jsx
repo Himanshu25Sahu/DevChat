@@ -63,12 +63,6 @@ export const Input = styled.div`
 const Modal = () => {
   const { isOpenModal } = useContext(ModalContext)
   const { modalType } = isOpenModal;
-  // ModalTypes
-  // 1: New Folder
-  // 2: New Playground
-  // 3: New Playground and Folder
-  // 4: Rename Folder
-  // 5: Rename Playground
   return (
     <ModalContainer>
       <ModalContent>
