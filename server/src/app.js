@@ -2,6 +2,7 @@ import cors from 'cors'
 import express from 'express'
 import cookieParser from 'cookie-parser';
 import session from 'express-session';
+import dotenv from 'dotenv'
 export const app=express();
 import { expressRouter } from './routes/authRoutes.js';
 import { postRouter } from './routes/postRoutes.js';
@@ -11,8 +12,9 @@ import { chatRouter } from './routes/chatRoutes.js';
 import { error } from './middlewares/error.js';
 import { messageRoute } from './routes/messageRoute.js';
 import { groupRouter } from './routes/groupRoutes.js';
+dotenv.config()
 app.use(cors({
-    origin: 'http://localhost:5173', // allow requests from your frontend
+    origin: process.env.FRONTEND_URL, // allow requests from your frontend
     credentials: true, // if you're using cookies or HTTP authentication
   }));
 app.use(express.json())
