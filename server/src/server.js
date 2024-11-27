@@ -6,7 +6,7 @@ import http from 'http';
 import cors from 'cors';
 import { Server } from 'socket.io';
 
-dotenv.config({ path: '../.env' });
+dotenv.config();
 
 const PORT = process.env.PORT || 3000;
 

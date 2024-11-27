@@ -1,7 +1,7 @@
 import { v2 as cloudinary } from "cloudinary";
 import fs from "fs";
 import { config } from "dotenv";
-config({ path: "../../.env" });
+config();
 
 cloudinary.config({
   cloud_name: process.env.CLODUINARY_CLOUD_NAME || "dqlcy9wmd",
