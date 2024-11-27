@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import "./MainHome22.css";
 import { useTypewriter, Cursor } from "react-simple-typewriter";
 import image from "../../public/bgrLogo.png";
-import image1 from "../../public/chatAPP.png";
+import image1 from "../../public/ChatAPP.png";
 import image2 from "../../public/Code.jpg";
 import { FaInstagram, FaLinkedin, FaGithub, FaTwitter } from "react-icons/fa";
 
