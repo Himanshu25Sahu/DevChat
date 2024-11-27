@@ -17,7 +17,6 @@ const Conversation = ({ data, currentUserId, onClick, onlineUsers }) => {
         const userId = data.members.find((id) => id !== currentUserId);
         const { data: user } = await axios.get(`${import.meta.env.VITE_BACKEND_BASEURL}/user/${userId}`);
         setUserData(user.data);
-        console.log("Conversation user data:", user.data.userdata);
         setIsOnline(onlineUsers.some((user) => user.userId === userId));
       } catch (error) {
         console.error("Error fetching conversation user data:", error);

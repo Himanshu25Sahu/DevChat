@@ -2,7 +2,6 @@ import { createContext, useState } from "react";
 
 export const ModalContext = createContext();
 
-// ModalFields: {foldername, filename, language, type, isopenmodel}
 function ModalProvider({children}){
     const initialModalFields = {
         show : false,

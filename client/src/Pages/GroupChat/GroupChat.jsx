@@ -22,7 +22,6 @@ const GroupChat = () => {
           `${import.meta.env.VITE_BACKEND_BASEURL}/group/getUserGroups`
         );
         setGroups(response.data.data);
-        console.log(groups);
       } catch (error) {
         console.error("Error fetching groups:", error);
       }
