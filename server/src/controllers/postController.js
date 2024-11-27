@@ -24,7 +24,7 @@ export const createPost = AsyncHandler(async (req, res, next) => {
         postContent = { type: "image", value: uploadRes.url };
     } else if (video) {
         const uploadRes = await uploadOnCloudinary(video);
-        console.log(uploadRes.duration);
+        
         postContent = { type: "video", value: uploadRes.url };
     }
     const post = await Post.create({
@@ -69,7 +69,7 @@ export const getFeedPosts = AsyncHandler(async (req, res, next) => {
 });
 
 export const deletePost = AsyncHandler(async (req, res, next) => {
-    console.log(req.params.postId);
+    
     const post = await Post.findById(req.params.postId);
 
     if (!post) {

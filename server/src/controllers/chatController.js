@@ -34,7 +34,7 @@ export const userChats =AsyncHandler( async (req, res) => {
       members: { $in: [req.user.id] },
     });
 
-    console.log("Chatcontroller.js",chats);
+   
     
     // Respond with the list of chats
     res.status(200).json(chats);

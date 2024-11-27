@@ -143,7 +143,7 @@ export const searchUser = AsyncHandler(async (req, res, next) => {
         .json(new ApiResponse(400, [], "Please provide a username to search"));
     }
 
-    console.log("Keyword:", keyword); // Log the query for debugging
+    
 
     // Perform the search
     const users = await User.find(keyword);
@@ -206,7 +206,7 @@ export const getMyDetails = AsyncHandler(async (req, res, next) => {
   }
 
   const user = userDetails[0];
-  // console.log(user);
+  
   res
     .status(200)
     .json(

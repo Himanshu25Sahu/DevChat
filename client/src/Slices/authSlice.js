@@ -17,11 +17,31 @@ const signup = createAsyncThunk("signup", async (userCredentials) => {
   return data;
 });
 
-const login = createAsyncThunk('login', async (userCredentials) => {
-  const { data } = await axios.post(`${import.meta.env.VITE_BACKEND_BASEURL}/auth/login`, userCredentials, {
-    withCredentials: true,  // Include cookies in requests
-  });
-  return data;
+const login = createAsyncThunk('login', async (userCredentials,{rejectWithValue }) => {
+  try {
+    const result = await axios.post(
+      `${import.meta.env.VITE_BACKEND_BASEURL}/auth/login`,
+      userCredentials,
+      {
+        withCredentials: true, // Include cookies
+      }
+    );
+    return result.data;
+  } catch (err) {
+    console.error("Error in login thunk:", err);
+
+    // Return a rejected value with the error message from the backend
+    if (err.response) {
+      // The request was made, and the server responded with a status code
+      return rejectWithValue(err.response.data.error);
+    } else if (err.request) {
+      // The request was made, but no response was received
+      return rejectWithValue("No response from server. Please try again.");
+    } else {
+      // Something else happened
+      return rejectWithValue("An unexpected error occurred.");
+    }
+  }
 });
 
 

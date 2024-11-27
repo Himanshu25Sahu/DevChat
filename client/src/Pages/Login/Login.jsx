@@ -23,13 +23,15 @@ const LoginPage = () => {
       const result = await dispatch(login({ email, password })).unwrap();
       if (result) {
         toast.success("Login Successful");
+        console.log(result);
+        
         navigate('/post'); // Navigate only after successful login
       }
     } catch (err) {
-      toast.error(err.message || "Login failed. Please check your credentials.");
-      console.error(err);
+      toast.error(err || "Login failed. Please check your credentials.");
+      console.error("LOGIN.JSX ERROR: ", err);
     } finally {
-      setIsSubmitting(false); 
+      setIsSubmitting(false); // Hide button loader after request
     }
   };
 
@@ -83,7 +85,7 @@ const LoginPage = () => {
             <Link to="/register">Register</Link>
           </div>
         </form>
-        {error && <p className="error-msg">Error: {error}</p>} {/* Display API error */}
+        {/* {error && <p className="error-msg">Error: {error}</p>} Display API error */}
       </div>
     </div>
   );

@@ -1,7 +1,7 @@
 import React from "react";
 import "./DevProfile.css";
 import { FaInstagram, FaLinkedin, FaGithub, FaArrowDown } from "react-icons/fa"; // Import the arrow icon
-import image from "../../../public/userimg.jpg";
+import Himanshu from "../../../public/Himanshu.png";
 import Mushraf from "../../../public/Mushraf.jpg";
 
 const DevProfile = () => {
@@ -68,32 +68,32 @@ const DevProfile = () => {
 
       <div className="dev-profile-card">
         <div className="dev-info">
-          <img src={image} alt="Developer 1" className="dev-image" />
-          <h2 className="dev-name">DEV1</h2>
+          <img src={Himanshu} alt="Developer 1" className="dev-image" />
+          <h2 className="dev-name">Himanshu Sahu</h2>
           <p className="dev-role">Full-stack Developer (MERN)</p>
           <p className="dev-description">
-            Expert in creating scalable server-side applications, API
-            integrations, and performance optimization. Experienced with
-            MongoDB, Express, React, and Node.js.
+            I’m a skilled full-stack developer with expertise in the MERN stack,
+            passionate about creating efficient web applications. Currently, I’m
+            diving into machine learning to broaden my knowledge and explore new
+            possibilities in tech.
           </p>
           <div className="dev-projects">
             <h3 className="dev-section-title">Projects</h3>
             <ul className="dev-list">
               <li>Coride: A ride-sharing app for travelers.</li>
-              <li>Shield: Web app for network anomaly detection.</li>
+              <li>
+                GemiCook: A Simple Solutions to find your receipes and make one.
+              </li>
             </ul>
             <div className="sep11"></div>
-            <h3 className="dev-section-title">Internships</h3>
-            <ul className="dev-list">
-              <li>Cropnow: Full-stack Developer Intern (4 months).</li>
-            </ul>
+
             <div className="scroll-indicator">
               <FaArrowDown />
             </div>
           </div>
           <div className="dev-social-links">
             <a
-              href="https://www.instagram.com/dev1"
+              href="https://www.instagram.com/hi_ma_n_sh_u/"
               target="_blank"
               rel="noopener noreferrer"
               className="social-icon instagram"
@@ -101,7 +101,7 @@ const DevProfile = () => {
               <FaInstagram />
             </a>
             <a
-              href="https://www.linkedin.com/in/dev1"
+              href="https://www.linkedin.com/in/himanshu-sahu-303b2b25a/"
               target="_blank"
               rel="noopener noreferrer"
               className="social-icon linkedin"
@@ -109,7 +109,7 @@ const DevProfile = () => {
               <FaLinkedin />
             </a>
             <a
-              href="https://github.com/dev1"
+              href="https://github.com/Himanshu25Sahu"
               target="_blank"
               rel="noopener noreferrer"
               className="social-icon github"
