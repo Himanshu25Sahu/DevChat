@@ -5,7 +5,7 @@ import axios from "axios";
 import ChatBox from "./Chat Components/Chatbox";
 import Conversation from "./Chat Components/Conversation";
 import { io } from "socket.io-client";
-import { FaPlus } from "react-icons/fa";
+import { FaPlus, FaArrowLeft } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import { HiUserGroup } from "react-icons/hi";
 import Loader from "../../components/Loader/Loader";
@@ -18,54 +18,63 @@ const Chat = () => {
   const [onlineUsers, setOnlineUsers] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [searchResults, setSearchResults] = useState([]);
+  const [isMobileView, setIsMobileView] = useState(window.innerWidth<=768);
   const [loading, setLoading] = useState(true); // Added loading state
   const navigate = useNavigate();
   const socket = useRef();
-  const { userData,token } = useSelector((state) => state.user);
+  const { userData, token } = useSelector((state) => state.user);
+
+  // useEffect(() => {
+  //   const handleResize = () => {
+  //     setIsMobileView(window.innerWidth <= 768);
+  //   };
+  //   window.addEventListener("resize", handleResize);
+  //   return () => window.removeEventListener("resize", handleResize);
+  // }, []);
 
   // Initialize socket connection and setup listeners
   useEffect(() => {
-    console.log("chat.jsx 28",token,userData);
-    
+    console.log("chat.jsx 28", token, userData);
+
     if (userData && userData._id && token) {
       socket.current = io(import.meta.env.VITE_BACKEND_BASEURL, {
         query: {
           token: `Bearer ${token}`,
         },
-        
       });
-  
+
       socket.current.emit("new-user-add", userData._id);
-  
+
       socket.current.on("get-users", (users) => {
         setOnlineUsers(users);
       });
-  
+
       socket.current.on("receive-message", (data) => {
         setReceiveMessage(data);
       });
-  
+
       return () => {
         socket.current.disconnect();
       };
     }
   }, [userData, token]);
-  
-  
+
   // Fetch chats for the current user
   useEffect(() => {
     const getChats = async () => {
       if (userData && userData._id) {
         try {
           setLoading(true); // Set loading to true before fetching
-          const { data } = await axios.get(`${import.meta.env.VITE_BACKEND_BASEURL}/chat/chats`, {
-            headers: {
-                'Authorization': `Bearer ${token}`
+          const { data } = await axios.get(
+            `${import.meta.env.VITE_BACKEND_BASEURL}/chat/chats`,
+            {
+              headers: {
+                Authorization: `Bearer ${token}`,
+              },
             }
-        });
+          );
           setChats(data);
-          console.log("chat.sjx 69 ",chats);
-          
+          console.log("chat.sjx 69 ", chats);
         } catch (error) {
           console.error("Error fetching chats:", error);
         } finally {
@@ -82,6 +91,13 @@ const Chat = () => {
   const handleConversationClick = (chat) => {
     setCurrentChat(chat);
   };
+  useEffect(() => {
+    console.log("p------- current chat", currentChat);
+  }, [currentChat]);
+
+  const handleBackToConversatoin = () => {
+    setCurrentChat(null);
+  };
 
   // Emit message when sendMessage is updated
   useEffect(() => {
@@ -95,11 +111,14 @@ const Chat = () => {
     if (searchTerm) {
       try {
         const { data } = await axios.get(
-          `${import.meta.env.VITE_BACKEND_BASEURL}/following/search?username=${searchTerm}`, {
+          `${
+            import.meta.env.VITE_BACKEND_BASEURL
+          }/following/search?username=${searchTerm}`,
+          {
             headers: {
-                'Authorization': `Bearer ${token}`
-            }
-        }
+              Authorization: `Bearer ${token}`,
+            },
+          }
         );
         setSearchResults(data.data);
       } catch (error) {
@@ -115,11 +134,12 @@ const Chat = () => {
         `${import.meta.env.VITE_BACKEND_BASEURL}/chat/create`,
         {
           receiverId: user._id,
-        }, {
+        },
+        {
           headers: {
-              'Authorization': `Bearer ${token}`
-          }
-      }
+            Authorization: `Bearer ${token}`,
+          },
+        }
       );
       setChats((prevChats) => [...prevChats, chat]);
       setCurrentChat(chat);
@@ -138,7 +158,15 @@ const Chat = () => {
     <div className="Chat">
       {userData ? (
         <div className="main-chat">
-          <div className="Left-side-chat">
+          <div
+            className={`Left-side-chat ${
+              isMobileView
+                ? currentChat
+                  ? "mobile-left-notsel"
+                  : "mobile-left"
+                : ""
+            } `}
+          >
             <div className="Chat-container">
               <div className="left-side-chat-top">
                 <div className="head-chat-l">
@@ -216,7 +244,15 @@ const Chat = () => {
             </div>
           </div>
 
-          <div className="Right-side-chat">
+          <div
+            className={`Right-side-chat ${
+              isMobileView
+                ? currentChat
+                  ? "mobile-right"
+                  : "mobile-right-notsel"
+                : ""
+            } `}
+          >
             {currentChat ? (
               <ChatBox
                 chat={currentChat}
@@ -233,6 +269,7 @@ const Chat = () => {
           </div>
         </div>
       ) : null}
+      <FaArrowLeft color="white" onClick={handleBackToConversatoin} />
     </div>
   );
 };

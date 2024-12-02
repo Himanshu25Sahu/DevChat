@@ -138,7 +138,7 @@ export const logout = AsyncHandler(async (req, res, next) => {
   res.cookie("token", null, {
     expires: new Date(Date.now()),
     httpOnly: true,
-    secure: true,
+    secure: false,
   });
   res.status(200).json(new ApiResponse(200, {}, "user LoggedOut Successfully"));
 });

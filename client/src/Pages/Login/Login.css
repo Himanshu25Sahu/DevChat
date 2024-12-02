@@ -139,7 +139,7 @@ body {
 }
 
 .login-button:hover {
-  background: #605dd3; /* Darker shade of primary */
+  background: #605dd3; 
 }
 
 .login-button:disabled {
@@ -148,19 +148,19 @@ body {
     120,
     235,
     0.5
-  ); /* Disabled state using primary color */
+  );
   cursor: not-allowed;
 }
 
-/* Error message styling */
+
 .error-msg {
-  color: red;
+  color: rgb(255, 0, 0);
   font-size: 14px;
   text-align: center;
   margin-top: 10px;
 }
 
-/* Register link */
+
 .login-form a {
   color: #7c78eb;
   text-decoration: none;
@@ -181,10 +181,10 @@ body {
 .reg :nth-child(2) {
   font-size: 17px;
 }
-/* Media Queries for responsiveness */
 @media (max-width: 768px) {
   .login-container {
-    padding: 30px 20px;
+    width: 300px;
+    padding:20px 15px;
   }
 
   .login-title {
@@ -208,11 +208,30 @@ body {
 
 @media (max-width: 480px) {
   .login-container {
-    padding: 20px;
-    border-radius: 10px;
+    width: 400px;
+    padding: 20px 15px;
   }
 
   .login-title {
-    font-size: 1.6rem;
+    font-size: 2rem;
+   
+  }
+  .login-input {
+    padding: 8px;
+    outline: none;
+    background: rgba(124, 120, 235, 0.2);
+    color: white;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    border: 1px solid #7c78eb8e;
+    transition: box-shadow 0.3s ease-in-out;
+    letter-spacing: 0.5px;
+  }
+  .login-button {
+    width: 100%;
+    padding: 8px;
+    font-size: 20px;
+    font-weight: 550;
+    letter-spacing: 0.5px;
   }
 }

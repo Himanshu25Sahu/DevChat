@@ -15,7 +15,7 @@ const MainHome = () => {
   });
 
   return (
-    <div className="main-cont-h">
+    <div className="main-cont-hpq">
       <div className="home-slider">
         <div className="homeslider-container">
           <h1 className="text">

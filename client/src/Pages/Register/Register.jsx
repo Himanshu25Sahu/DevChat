@@ -16,8 +16,9 @@ const RegisterPage = () => {
   });
   const [avatar, setAvatar] = useState(null);
   const [avatarPreview, setAvatarPreview] = useState(DefaultAvatar);
-  const [step, setStep] = useState(1); // 1: Registration, 2: Verification
+  const [step, setStep] = useState(1); 
   const [verificationCode, setVerificationCode] = useState("");
+  const [isloading, setIsLoading]=useState(false);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -40,7 +41,7 @@ const RegisterPage = () => {
 
   const handleRegister = async (e) => {
     e.preventDefault();
-
+    
     if (!avatar) {
       toast.error("Please upload an avatar.");
       return;
@@ -53,11 +54,13 @@ const RegisterPage = () => {
     completeData.append("avatar", avatar);
 
     try {
+      setIsLoading(true);
       const result = await axios.post(
         `${import.meta.env.VITE_BACKEND_BASEURL}/user/register`,
         completeData,{ withCredentials: true } 
       );
       if (result.data.success) {
+        setIsLoading(false);
         toast.success("Verification code sent to your email.");
         setStep(2);
       }
@@ -71,6 +74,7 @@ const RegisterPage = () => {
     e.preventDefault();
 
     try {
+      setIsLoading(true);
       const result = await axios.post(
         `${import.meta.env.VITE_BACKEND_BASEURL}/user/register/verification`,
         {
@@ -79,6 +83,7 @@ const RegisterPage = () => {
       );
       console.log(result.data)
       if (result.data.success) {
+        setIsLoading(false);
         toast.success("Registration successful. Please log in.");
         navigate("/login");
       }
@@ -90,6 +95,7 @@ const RegisterPage = () => {
 
   return (
     <div className="register">
+     {isloading ? <Loader style={{ zIndex: 10000 }} /> : ""}
       {step === 1 && (
         <div className="reg-main-reg-cont">
           <div className="reg-avatar-section">

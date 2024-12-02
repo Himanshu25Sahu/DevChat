@@ -1,7 +1,7 @@
 .home-container {
   display: flex;
   height: 95vh;
-  color: #ffffff;
+  /* color: #ffffff; */
   font-family: "Roboto", sans-serif;
   width: 67.2vw;
   border-radius: 18px;

@@ -376,3 +376,50 @@
     width: 90vw;
   }
 } */
+
+/* @media (max-width: 768px) { */
+  /* .Left-side-chat{ */
+    /* flex: 1; */
+    /* display: none; */
+  /* } */
+  /* .Right-side-chat{ */
+    /* display: none; */
+  /* } */
+/* } */
+
+/* .mobile-left{
+  display: block;
+  background-color: red;
+  flex: 1;
+}
+.mobile-right{
+  display: none;
+}
+.mobile-left-notsel{
+  display: none;
+} */
+
+/* .mobile-right-notsel{
+  display: none;
+} */
+
+.mobile-left {
+  display: block;
+  flex: 1;
+}
+
+/* For mobile view when a chat is selected */
+.mobile-left-notsel {
+  display: none;
+}
+
+/* For the right panel when a chat is selected */
+.mobile-right {
+  width: 100%; /* Show full right panel */
+  visibility: visible;
+}
+
+/* For mobile view when no chat is selected */
+.mobile-right-notsel {
+  display: none;
+}

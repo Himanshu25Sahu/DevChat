@@ -8,7 +8,7 @@ import Select from 'react-select';
 import styled from 'styled-components';
 
 const InputWithSelect = styled.div`
-  display: grid;
+ display: grid;
   grid-template-columns: 1fr 0.5fr;
   gap: 1rem;
   margin-top: 1.2rem;

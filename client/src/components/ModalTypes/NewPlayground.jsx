@@ -6,7 +6,7 @@ import { PlaygroundContext } from '../../context/PlaygroundContext'
 import Select from 'react-select';
 import styled from 'styled-components';
 const InputWithSelect = styled.div`
-  display: grid;
+    display: grid;
   grid-template-columns: 1fr 0.5fr;
   gap: 1rem;
   margin-top: 1.2rem;
@@ -18,9 +18,9 @@ const InputWithSelect = styled.div`
   }
 
   button {
-    background: #241f21;
+    background: #7C78EB;
     height: 2.5rem;
-    color: white;
+    color:white;
     padding: 0.3rem 2rem;
   }
 
